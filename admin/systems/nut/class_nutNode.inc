@@ -155,7 +155,7 @@ class nutNode extends simplePlugin
     $nPath = $attrs['fdNutCertPath'][0];
 
     $urlArray=parse_url($nURL);
-    $nutSrv = new nutServer();
+    $nutSrv = new nutService();
 
     $nutHandler = $nutSrv->nutConnect($urlArray['host'], $urlArray['port']);
   }
