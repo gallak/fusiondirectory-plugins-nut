@@ -28,7 +28,7 @@ class nutServerSelectAttribute extends SelectAttribute
     global $config;
     $ldap = $config->get_ldap_link();
     $allServers=array();
-    $ldap->search('(objectClass=fdNutServer)', ['dn','cn','description']);
+    $ldap->search('(objectClass=fdNutService)', ['dn','cn','description']);
     while ($uServer = $ldap->fetch()) {
         $allServers[$uServer['dn']]= array(     'nutCn' => $uServer['cn'][0],
                                                 'nutDescription' => $uServer['description'][0],
@@ -123,7 +123,7 @@ class nutNode extends simplePlugin
         'attrs' => [
              new FakeAttribute('fdNutDetails'),
             ],
-          'template' => get_template_path('nutnode.tpl', TRUE, dirname(__FILE__)),
+          // 'template' => get_template_path('nutnode.tpl', TRUE, dirname(__FILE__)),
           ],
 
     ];
