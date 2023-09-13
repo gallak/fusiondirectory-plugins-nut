@@ -10,7 +10,7 @@ attributetype ( 1.3.6.1.4.1.38414.142.1.1 NAME 'fdNutServiceURL'
         SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
         SINGLE-VALUE )
 
-attributetype ( 1.3.6.1.4.1.38414.142.1.2 NAME 'fdNutCertPath'
+attributetype ( 1.3.6.1.4.1.38414.142.1.2 NAME 'fdNutServiceCertPath'
         DESC 'FusionDirectory - The nut Certificate path'
         EQUALITY caseIgnoreIA5Match
         SUBSTR caseIgnoreSubstringsMatch
@@ -31,13 +31,19 @@ attributetype ( 1.3.6.1.4.1.38414.142.1.4 NAME 'fdNutAlias'
         SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
         SINGLE-VALUE )
 
+attributetype ( 1.3.6.1.4.1.38414.142.1.5 NAME 'fdNutServiceTimeout'
+        DESC 'FusionDirectory - Time out for nut service'
+        EQUALITY caseIgnoreIA5Match
+        SUBSTR caseIgnoreSubstringsMatch
+        SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
+        SINGLE-VALUE )
 
 # Object Class
 objectclass (1.3.6.1.4.1.38414.142.2.1 NAME 'fdNutService'
         SUP top AUXILIARY
         DESC 'FusionDirectory - Nut Service ObjectClass'
-        MUST ()
-        MAY (fdNutServiceURL $ fdNutCertPath ))
+        MUST (fdNutServiceURL)
+        MAY ( fdNutServiceCertPath $ fdNutServiceTimeout))
 
 
 # Object Class

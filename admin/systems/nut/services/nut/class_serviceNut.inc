@@ -43,20 +43,16 @@ class serviceNut extends simpleService
         'name'  => _('NUT Service'),
         'attrs' => [
           new StringAttribute(
-            _('URL'), _('URL to access the LemonLDAP Endpoint server'),
+            _('URL'), _('URL to access the nut Service'),
             'fdNutServiceURL', TRUE
           ),
-          new StringAttribute(
-            _('User'), _('User to access urbackup server Rest API.'),
-            'fdNutServiceUser', FALSE
-          ),
-          new PasswordAttribute(
-            _('Password'), _('Password to access urbackup server Rest API.'),
-            'fdNutServicePassword', FALSE
+          new intAttribute(
+            _('Timeout'), _('Time out for accessing nut Server'),
+            'fdNutServiceTimeout', FALSE
           ),
           new StringAttribute(
             _('Certificate Path'), _('Certificat path'),
-            'fdNutCertPath', FALSE
+            'fdNutServiceCertPath', FALSE
           ),        
           ]
       ],
