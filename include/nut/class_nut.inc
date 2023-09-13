@@ -4,7 +4,7 @@ class nutService {
     public $handle="";
     public $nutobj=array();
 
-    function nutConnect(string $host = '127.0.0.1', string $port = '3493', int $timeout)
+    function nutConnect(string $host = '127.0.0.1', string $port = '3493', int $timeout = 30)
     {
         $errno="";
         $errstr="";
