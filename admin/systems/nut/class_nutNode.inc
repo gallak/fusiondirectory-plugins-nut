@@ -144,16 +144,17 @@ class nutNode extends simplePlugin
 
     $ldap = $config->get_ldap_link();
     $ldap->cd($this->fdNutServerDn);
-    $ldap->search('(objectClass=fdNutService)', ['fdNutServiceURL','fdNutCertPath']);
+    $ldap->search('(objectClass=fdNutService)', ['fdNutServiceURL','fdNutCertPath','fdNutServiceTimeout']);
     $attrs = $ldap->fetch();
 
     $nURL = $attrs['fdNutServiceURL'][0];
     $nPath = $attrs['fdNutCertPath'][0];
+    $nTimeout = $attrs['fdNutServiceTimeout'][0];
 
     $urlArray=parse_url($nURL);
     
     $this->nutHandler = new nutService();
-    $this->nutHandler->nutConnect($urlArray['host'], $urlArray['port']);
+    $this->nutHandler->nutConnect($urlArray['host'], $urlArray['port'],$nTimeout);
 
   }
 
