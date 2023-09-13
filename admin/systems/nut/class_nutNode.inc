@@ -95,7 +95,14 @@ class nutNode extends simplePlugin
   {
     global $config;
     $this->connectNutServer();
-    $nutInfos=$this->nutHandler->getNutAllInfos($this->attrs['cn'][0]);
+
+    if($this->attrs['fdNutAlias'][0]){
+      $upsName=$this->attrs['fdNutAlias'][0];
+    }else{
+      $upsName=$this->attrs['cn'][0];
+    }
+
+    $nutInfos=$this->nutHandler->getNutAllInfos($upsName);
    
     var_dump($nutInfos);
     
@@ -109,8 +116,12 @@ class nutNode extends simplePlugin
         'class' => ['fullwidth'],
         'name'  => _('Node Config'),
         'attrs' => [
-             new nutServerSelectAttribute (_('Nut Service'),_('Name of server where the client is connected to'),
+            new nutServerSelectAttribute (_('Nut Service'),_('Name of server where the client is connected to'),
                 'fdNutServerDn',TRUE),
+            new StringAttribute(
+                  _('Alias'), _('Alias UPS'),
+                  'fdNutAlias', FALSE
+                ),
             ],
           ],
       'nodeTrace' => [

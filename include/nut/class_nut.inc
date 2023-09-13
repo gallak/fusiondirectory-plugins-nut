@@ -11,7 +11,6 @@ class nutService {
         $fp=fsockopen( $host, $port, $errno, $errstr, $timeout);
 
         if (!$fp){
-                echo "ERROR: $errno - $errstr";
                 msg_dialog::display(_('Error while connecting to Nut service'), "Error while getting informations :".$errstr ,INFO_DIALOG);
         }else{
                 $this->handle=$fp;
