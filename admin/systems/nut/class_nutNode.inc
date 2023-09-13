@@ -76,9 +76,6 @@ class nutNode extends simplePlugin
   protected $displayHeader  = TRUE;
   protected $loaded = TRUE;
 
-  #public $allNdServer = array();
-  #public $currentServer ="";
-
 
   static function plInfo (): array
   {
@@ -98,9 +95,8 @@ class nutNode extends simplePlugin
   {
     global $config;
     $this->connectNutServer();
-
-    $nutInfos=$nutHandler->getNutAllInfos($this->attrs['cn']);
-    
+    $nutInfos=$this->nutHandler->getNutAllInfos($this->attrs['cn'][0]);
+   
     var_dump($nutInfos);
     
   }
@@ -148,16 +144,17 @@ class nutNode extends simplePlugin
 
     $ldap = $config->get_ldap_link();
     $ldap->cd($this->fdNutServerDn);
-    $ldap->search('(objectClass=fdNutServer)', ['fdNutServiceURL','fdNutCertPath']);
+    $ldap->search('(objectClass=fdNutService)', ['fdNutServiceURL','fdNutCertPath']);
     $attrs = $ldap->fetch();
 
     $nURL = $attrs['fdNutServiceURL'][0];
     $nPath = $attrs['fdNutCertPath'][0];
 
     $urlArray=parse_url($nURL);
-    $nutSrv = new nutService();
+    
+    $this->nutHandler = new nutService();
+    $this->nutHandler->nutConnect($urlArray['host'], $urlArray['port']);
 
-    $nutHandler = $nutSrv->nutConnect($urlArray['host'], $urlArray['port']);
   }
 
 }

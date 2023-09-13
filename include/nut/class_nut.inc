@@ -1,16 +1,21 @@
-<?php 
+<?php
 class nutService {
 
     public $handle="";
     public $nutobj=array();
 
-    function nutConnect(string $host = '127.0.0.1', string $port = '3493')
+    function nutConnect(string $host = '127.0.0.1', string $port = '3493', int $timeout)
     {
         $errno="";
         $errstr="";
-        $timeout=30;
-        $this->handle=fsockopen( $host, $port, $errno, $errstr, $timeout);
-        return($this->handle);
+        $fp=fsockopen( $host, $port, $errno, $errstr, $timeout);
+
+        if (!$fp){
+                echo "ERROR: $errno - $errstr";
+                msg_dialog::display(_('Error while connecting to Nut service'), "Error while getting informations :".$errstr ,INFO_DIALOG);
+        }else{
+                $this->handle=$fp;
+        }
     }
 
     function getNutAllInfos(string $ups){
