@@ -46,9 +46,9 @@ class serviceNut extends simpleService
             _('URL'), _('URL to access the nut Service'),
             'fdNutServiceURL', TRUE
           ),
-          new intAttribute(
+          new IntAttribute(
             _('Timeout'), _('Time out for accessing nut Server'),
-            'fdNutServiceTimeout', FALSE
+            'fdNutServiceTimeout', FALSE,1,120
           ),
           new StringAttribute(
             _('Certificate Path'), _('Certificat path'),
