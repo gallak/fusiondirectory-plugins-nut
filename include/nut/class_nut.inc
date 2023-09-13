@@ -30,6 +30,14 @@ class nutService {
                 $info=preg_split("/ /",$line);
                 $this->nutobj[$info[2]]=$info[3];
             }
+            if(substr($line, 0, 3) == 'ERR' ) {
+                $info=preg_split("/ /",$line);
+                fwrite($this->handle, "logout");
+                msg_dialog::display(_('Error while fetching info'), "Error while getting informations :".$info[1]." ".$ups ,INFO_DIALOG);
+                break;
+            }
+
+
         }
         fclose($this->handle);
         return($this->nutobj);
