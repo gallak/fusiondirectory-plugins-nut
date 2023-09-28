@@ -103,9 +103,7 @@ class nutNode extends simplePlugin
     }
 
     $nutInfos=$this->nutHandler->getNutAllInfos($upsName);
-   
-    var_dump($nutInfos);
-    
+    $this->fdNutInfos=$this->nutHandler->renderNutInfos($nutInfos);
   }
 
 
@@ -126,11 +124,11 @@ class nutNode extends simplePlugin
           ],
       'nodeTrace' => [
         'class' => ['fullwidth'],
-        'name'  => _('Node Trace'),
+        'name'  => _('Unit Power Supply Info'),
         'attrs' => [
-             new FakeAttribute('fdNutDetails'),
+             new FakeAttribute('fdNutInfos'),
             ],
-          // 'template' => get_template_path('nutnode.tpl', TRUE, dirname(__FILE__)),
+           'template' => get_template_path('nutNode.tpl', TRUE, dirname(__FILE__)),
           ],
 
     ];

@@ -4,6 +4,15 @@ class nutService {
     public $handle="";
     public $nutobj=array();
 
+
+    public $renderingNutInfos=array(
+	"battery.charge" => "string",
+	"input.transfer.low" => "bar",
+	);
+
+
+
+
     function nutConnect(string $host = '127.0.0.1', string $port = '3493', int $timeout = 30)
     {
         $errno="";
@@ -45,6 +54,17 @@ class nutService {
 
     function getNutInfos(string $item){
         return($this->nutobj[$item]);
+    }
+
+    
+    function renderNutInfos(){
+	$nutObjRender=array();
+	foreach ($this->nutobj as $key => $val){
+		$itemArray=explode(".",$key,2);
+		$nutObjRender[$itemArray[0]][$itemArray[1]]['value']=str_replace('"', "", $val);
+		$nutObjRender[$itemArray[0]][$itemArray[1]]['render']=$this->renderingNutInfos[$key];
+	}
+	return $nutObjRender;
     }
 
 }
