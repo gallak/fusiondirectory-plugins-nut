@@ -7,11 +7,11 @@
 	{foreach from=$attributes.fdNutInfos key=element item=infos}
 
 	<div id="{$element}" class="plugin-section">
-	<span class="legend">{$element}</span>
+	<span class="legend">{t}{$element}{/t}</span>
 	<table>
 		{foreach from=$infos key=value item=info}
 	 	<tr>
-                	<td style="border: 1px solid grey; width: 50%;"><b>{$value}</b></td>
+                	<td style="border: 1px solid grey; width: 50%;"><b>{t}{$value}{/t}</b></td>
                 <td style="width: 50%; border: 1px solid grey">
 
                 {if $info.render eq 'bar'}

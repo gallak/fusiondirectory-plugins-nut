@@ -6,8 +6,9 @@ class nutService {
 
 
     public $renderingNutInfos=array(
-	"battery.charge" => "string",
-	"input.transfer.low" => "bar",
+	    "battery.charge" => "bar",
+        "ups.charge" => "bar",
+	    "input.transfer.low" => "bar"
 	);
 
 
@@ -37,7 +38,7 @@ class nutService {
             }
             if(substr($line, 0, 3) == 'VAR' ) {
                 $info=preg_split("/ /",$line);
-                $this->nutobj[$info[2]]=$info[3];
+                $this->nutobj[$info[2]]=implode(" ",array_splice($info,3));
             }
             if(substr($line, 0, 3) == 'ERR' ) {
                 $info=preg_split("/ /",$line);

@@ -6,8 +6,10 @@
 # Translators:
 # Antoine Gallavardin <antoine.gallavardin@freee.fr>, 2021
 #
+
 msgid ""
 msgstr ""
+
 "Project-Id-Version: FusionDirectory VERSION\n"
 "POT-Creation-Date: 2021-02-12 17:03+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
@@ -19,3 +21,251 @@ msgstr ""
 
 msgid "OL"
 msgstr "En ligne"
+
+msgid "ALARM OL RB"
+msgstr "En ligne, alarme batterie"
+
+msgid "charge"
+msgstr "Charge actuelle"
+
+msgid "charge.low"
+msgstr "Seuil critique de charge"
+
+msgid "charge.warning"
+msgstr "Seuil d'alerte de charge"
+
+msgid "mfr.date"
+msgstr "Date de fabrication"
+
+msgid "runtime"
+msgstr "Duree d'usage"
+
+msgid "runtime.low"
+msgstr "Duree critique d'usage"
+
+msgid "type"
+msgstr "Type de batterie"
+
+msgid "voltage"
+msgstr "Tension actuelle"
+
+msgid "voltage.nominal"
+msgstr "Tension nominale"
+
+msgid "mfr"
+msgstr "Constructeur"
+
+msgid "device.model"
+msgstr "Modèle"
+
+msgid "device.serial"
+msgstr "Numerie de serie"
+
+msgid "device.type"
+msgstr "Type"
+
+msgid "name"
+msgstr "Nom du pilote"
+
+msgid "parameter.pollfreq"
+msgstr "frequence d'interrogation"
+
+msgid "parameter.pollinterval"
+msgstr "interval d'interogation"
+
+msgid "parameter.port"
+msgstr "Port d'interrogation"
+
+msgid "version"
+msgstr "Version"
+
+msgid "version.data"
+msgstr "Version de données"
+
+msgid "version.internal"
+msgstr "Version interne"
+
+msgid "input.transfer.high"
+msgstr "Seuil maximal de tension d'entrée"
+
+msgid "input.transfer.low"
+msgstr "Seuil minimal de tension d'entrée"
+
+msgid "battery"
+msgstr "Batterie"
+
+msgid "PbAcid"
+msgstr "Acide / Plomb"
+
+msgid "ups"
+msgstr "Onduleur"
+
+msgid "input"
+msgstr "Tension d'entrée"
+
+msgid "driver"
+msgstr "Pilote"
+
+msgid "Nut"
+msgstr "Nut"
+
+msgid "Nut Server connection"
+msgstr "Connexion au service nut"
+
+msgid "Nut Service"
+msgstr "Service Nut"
+
+msgid "Alias"
+msgstr "Alias"
+
+msgid "Unit Power Supply Info"
+msgstr "Information sur le fournisseur d'énergie"
+
+msgid "URL"
+msgstr "URL"
+
+msgid "Timeout"
+msgstr "Délai"
+
+msgid "Certificate Path"
+msgstr "Chemin du certificat"
+
+msgid "Error while connecting to Nut service"
+msgstr "Erreur pendant la connexion au service"
+
+msgid "Error while fetching info"
+msgstr "Erreur durant la récupération des informations"
+
+msgid "ambient"
+msgstr "Environnement"
+
+msgid "humidity.high"
+msgstr "Taux maximal d'humidité"
+
+msgid "humidity"
+msgstr "Taux d'humidité"
+
+msgid "humidity.low"
+msgstr "Taux minimal d'humidité"
+
+msgid "temperature"
+msgstr "Température"
+
+msgid "temperature.high"
+msgstr "Seuil maximal de température"
+
+msgid "temperature.low"
+msgstr "Seuil minimal de température"
+
+msgid "quality"
+msgstr "Qualité"
+
+msgid "parameter.mode"
+msgstr "mode du pilote"
+
+msgid "parameter.synchronous"
+msgstr "Paramètre synchronisé"
+
+
+msgid "alarm"
+msgstr "Alarme"
+
+msgid "firmware"
+msgstr "Microgiciel"
+
+msgid "firmware.aux"
+msgstr "Microgiciel auxiliaire"
+
+msgid "model"
+msgstr "Modèle"
+
+msgid "power"
+msgstr "Puissance"
+
+msgid "power.nominal"
+msgstr "Puissance nominale"
+
+msgid "realpower.nominal"
+msgstr "Puissance nominale réelle"
+
+msgid "start.auto"
+msgstr "Démarrage automatique"
+
+msgid "status"
+msgstr "Status"
+
+msgid "test.result"
+msgstr "Résultat du test"
+
+msgid "output"
+msgstr "Sortie"
+
+msgid "frequency"
+msgstr "Fréquence de sortie"
+
+msgid "frequency.nominal"
+msgstr "Fréquence de sortie nominale"
+
+msgid "L1-N.voltage"
+msgstr "Phase 1 : Tension de sortie maximale"
+
+msgid "L1.current"
+msgstr "Phase 1 : Tension de sortie courante"
+
+msgid "L1.power.percent"
+msgstr "Phase 1 : pourcentage de sortie"
+
+msgid "L1.realpower"
+msgstr "Phase 1 : Tension réelle"
+
+msgid "L2-N.voltage"
+msgstr "Phase 2 : Tension de sortie maximale"
+
+msgid "L2.current"
+msgstr "Phase 2 : Tension de sortie courante"
+
+msgid "L2.power.percent"
+msgstr "Phase 2 : pourcentage de sortie"
+
+msgid "L2.realpower"
+msgstr "Phase 2 : Tension réelle"
+
+msgid "L3-N.voltage"
+msgstr "Phase 3 : Tension de sortie maximale"
+
+msgid "L3.current"
+msgstr "Phase 3 : Tension de sortie courante"
+
+msgid "L3.power.percent"
+msgstr "Phase 3 : pourcentage de sortie"
+
+msgid "L3.realpower"
+msgstr "Phase 3 : Tension réelle"
+
+msgid "phases"
+msgstr "Nombre de phase"
+
+msgid "charger.status"
+msgstr "Status"
+
+msgid "resting"
+msgstr "En repos"
+
+msgid "outlet"
+msgstr "Prise de sortie"
+
+msgid "desc"
+msgstr "Description"
+
+msgid "delay.start"
+msgstr "Délai de démarrage"
+
+msgid "delay.shutdown"
+msgstr "Délai d'arrêt"
+
+msgid "load"
+msgstr "Charge"
+
+msgid "current"
+msgstr "Courant"
+

@@ -2,23 +2,121 @@
 # Copyright (C) YEAR FusionDirectory Project
 # This file is distributed under the same license as the FusionDirectory package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
+#
 # Translators:
-# Antoine Gallavardin <antoine.gallavardin@free.fr>, 2021
-# 
-
+# Antoine Gallavardin <antoine.gallavardin@freee.fr>, 2021
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "POT-Creation-Date: 2021-02-12 17:03+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Language-Team: English\n"
-"Language: en\n"
+"Language-Team: French\n"
+"Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
 
-
 msgid "OL"
 msgstr "On-Line"
+
+msgid "battery.charge"
+msgstr "battery.charge"
+
+msgid "battery.charge.low"
+msgstr "battery.charge.low"
+
+msgid "battery.charge.warning"
+msgstr "battery.charge.warning"
+
+msgid "battery.mfr.date"
+msgstr "battery.mfr.date"
+
+msgid "battery.runtime"
+msgstr "battery.runtime"
+
+msgid "battery.runtime.low"
+msgstr "battery.runtime.low"
+
+msgid "battery.type"
+msgstr "battery.type"
+
+msgid "battery.voltage"
+msgstr "battery.voltage"
+
+msgid "battery.voltage.nominal"
+msgstr "battery.voltage.nominal"
+
+msgid "device.mfr"
+msgstr "device.mfr"
+
+msgid "device.model"
+msgstr "device.model"
+
+msgid "device.serial"
+msgstr "device.serial"
+
+msgid "device.type"
+msgstr "device.type"
+
+msgid "driver.name"
+msgstr "driver.name"
+
+msgid "driver.parameter.pollfreq"
+msgstr "driver.parameter.pollfreq"
+
+msgid "driver.parameter.pollinterval"
+msgstr "driver.parameter.pollinterval"
+
+msgid "driver.parameter.port"
+msgstr "driver.parameter.port"
+
+msgid "driver.version"
+msgstr "driver.version"
+
+msgid "driver.version.data"
+msgstr "driver.version.data"
+
+msgid "driver.version.internal"
+msgstr "driver.version.internal"
+
+msgid "input.transfer.high"
+msgstr "input.transfer.high"
+
+msgid "input.transfer.low"
+msgstr "input.transfer.low"
+
+msgid "Nut"
+msgstr "Nut"
+
+msgid "Node Config"
+msgstr "Node Config"
+
+msgid "Nut Service"
+msgstr "Nut Service"
+
+msgid "Alias"
+msgstr "Alias"
+
+msgid "Unit Power Supply Info"
+msgstr "Unit Power Supply Info"
+
+msgid "NUT Service"
+msgstr "NUT Service"
+
+msgid "URL"
+msgstr "URL"
+
+msgid "Timeout"
+msgstr "Timeout"
+
+msgid "Certificate Path"
+msgstr "Certificate Path"
+
+msgid "Error while connecting to Nut service"
+msgstr "Error while connecting to Nut service"
+
+msgid "Error while fetching info"
+msgstr "Error while fetching info"
+
