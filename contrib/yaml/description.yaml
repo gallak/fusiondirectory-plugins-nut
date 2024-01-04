@@ -1,7 +1,7 @@
 information :
   name : "nut"
-  description : "plugin which allow seeing Network Uninterruptible Power Supply"
-  version : "0.1"
+  description : "plugin which allow seeing Network Uninterruptible Power Supply trought NUT system"
+  version : "0.2"
   authors : ['antoine.gallavardin@free.fr']
   status : "dev"
   screenshotUrl:
@@ -22,13 +22,19 @@ support :
 requirement:
   fdVersion : 1.4
   phpVersion : 7.2.0
+  plugin : 
+    - 'cache'
+
 
 content :
   fileList :
-  - './admin/systems/nut/services/nut/class_serviceNut.inc'
-  - './admin/systems/nut/class_nutNode.inc'
-  - './include/nut/class_nutRessource.inc'
-  - './locale/fr/fusiondirectory.po'
-  - './locale/en/fusiondirectory.po'
-  - './contrib/yaml/description.yaml'
-  - './contrib/openldap/nut-fd.schema'
+    - './admin/systems/nut/nutNode.tpl'
+    - './admin/systems/nut/nutStat.tpl'
+    - './admin/systems/nut/services/nut/class_serviceNut.inc'
+    - './admin/systems/nut/class_nutDashboard.inc'
+    - './admin/systems/nut/class_nutNode.inc'
+    - './include/nut/class_nutRessource.inc'
+    - './locale/fr/fusiondirectory.po'
+    - './locale/en/fusiondirectory.po'
+    - './contrib/yaml/description.yaml'
+    - './contrib/openldap/nut-fd.schema'
