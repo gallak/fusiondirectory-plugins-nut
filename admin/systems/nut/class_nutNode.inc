@@ -20,63 +20,17 @@
  */
 
 
-
-class nutServerSelectAttribute extends SelectAttribute
-{
-  public function getAllnutServers()
-    {
-    global $config;
-    $ldap = $config->get_ldap_link();
-    $allServers=array();
-    $ldap->search('(objectClass=fdNutService)', ['dn','cn','description']);
-    while ($uServer = $ldap->fetch()) {
-        $allServers[$uServer['dn']]= array(     'nutCn' => $uServer['cn'][0],
-                                                'nutDescription' => $uServer['description'][0],
-                                        );
-        }
-    return($allServers);
-  }
-
-
-    function setParent (&$plugin)
-    {
-        parent::setParent($plugin);
-        if (is_object($this->plugin)) {
-            $this->updateChoices();
-        }
-    }
-
-    function updateChoices ()
-    {
-        global $config;
-        $serversName    = [];
-        $serversDescription = [];
-        foreach ($this->getAllnutServers() as $name => $content){
-            $serversDescription[] = $content['nutCn']." ".$content['nutDescription'];
-            $serversDn[] = $name;
-            $this->setChoices($serversDn, $serversDescription);
-        }
-    }
-
-}
-
-
-
-
-
-
-
-
-
-class nutNode extends simplePlugin
+class nutNode extends simpleRemotePlugin
 {
 
-  public $nutHandler;
+  public $remoteHandler;
+  public $remoteRessource="nut";
+  public $remoteRenderingMap=array();
 
   protected $displayHeader  = TRUE;
   protected $loaded = TRUE;
-
-
+  public $remoteData;
+  
   static function plInfo (): array
   {
     return [
@@ -90,22 +44,18 @@ class nutNode extends simplePlugin
   }
 
 
-
-  public function refresh ()
-  {
-    global $config;
-    $this->connectNutServer();
-
-    if($this->attrs['fdNutAlias'][0]){
-      $upsName=$this->attrs['fdNutAlias'][0];
-    }else{
-      $upsName=$this->attrs['cn'][0];
-    }
-
-    $nutInfos=$this->nutHandler->getNutAllInfos($upsName);
-    $this->fdNutInfos=$this->nutHandler->renderNutInfos($nutInfos);
+  function refresh(){
+    // Fetch remote and ordered data
+    $tmpdata=$this->remoteHandler->refreshRessource();
+    // Filter data base on Rendering Map and assign type
+    $this->remoteData=$this->remoteHandler->renderOneRsc($tmpdata,$this->remoteRenderingMap);
+    // Set Data for dislaying
+    $this->attributesAccess['remoteData']->setValue($this->remoteData);
+    // update Cache
+    $this->updateRemoteObjectCache($this->remoteData);
+    // save it
+    $this->save();
   }
-
 
   static function getAttributesInfo (): array
   {
@@ -120,13 +70,19 @@ class nutNode extends simplePlugin
                   _('Alias'), _('Alias UPS'),
                   'fdNutAlias', FALSE
                 ),
-            ],
+            new ButtonAttribute(_('Refresh Informations'), _('Refresh informations'),
+            'fdNutUpdateButton', _('Refresh'),'refresh'
+            ),
+            new HiddenAttribute('remoteCacheAction'),
+            
+          ],
           ],
       'nodeTrace' => [
         'class' => ['fullwidth'],
         'name'  => _('Unit Power Supply Info'),
         'attrs' => [
-             new FakeAttribute('fdNutInfos'),
+          new FakeAttribute('remoteCacheMapping'),
+            new FakeAttribute('remoteData'),
             ],
            'template' => get_template_path('nutNode.tpl', TRUE, dirname(__FILE__)),
           ],
@@ -135,36 +91,36 @@ class nutNode extends simplePlugin
   }
 
 
+
   function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE)
   {
 
-  parent::__construct($dn, $object, $parent, $mainTab);
-  if (isset($this->attrs['fdNutServerDn'])){
-	    $currentServer=$this->attrs['fdNutServerDn'];
-	    $this->refresh();
-	  }
-    $this->ignore_account = FALSE;  // affiche l'activation ou pas du plugin
-  }
-
-
-
-  function connectNutServer() {
-    global $config;
-
-    $ldap = $config->get_ldap_link();
-    $ldap->cd($this->fdNutServerDn);
-    $ldap->search('(objectClass=fdNutService)', ['fdNutServiceURL','fdNutCertPath','fdNutServiceTimeout']);
-    $attrs = $ldap->fetch();
-
-    $nURL = $attrs['fdNutServiceURL'][0];
-    $nPath = $attrs['fdNutCertPath'][0];
-    $nTimeout = $attrs['fdNutServiceTimeout'][0];
-
-    $urlArray=parse_url($nURL);
+    parent::__construct($dn, $object, $parent, $mainTab);
     
-    $this->nutHandler = new nutService();
-    $this->nutHandler->nutConnect($urlArray['host'], $urlArray['port'],$nTimeout);
+    $this->attributesAccess['remoteCacheAction']->setInLdap(FALSE);
+   // $this->attributesAccess['remoteCacheMapping']->setInLdap(FALSE);
+    $ressource=$this->remoteRessource."Ressource";
+    $this->remoteRenderingMap=$this->convertTransformMap($this->remoteRessource);
+    if (isset($this->attrs['fdNutServerDn'])){
+        if($this->attrs['fdNutAlias'][0]){
+          $upsName=$this->attrs['fdNutAlias'][0];
+        }else{
+          $upsName=$this->attrs['cn'][0];
+        }
 
+	       $currentServer=$this->attrs['fdNutServerDn'][0];
+         $this->remoteHandler=new $ressource($currentServer,$upsName);
+         // test mappig externe
+         
+         
+         //var_dump($this->remoteRenderingMap);
+         $this->attributesAccess['remoteCacheMapping']->setValue($this->remoteRenderingMap);
+         if ( ! $this->remoteData ){
+          $this->remoteData=$this->getRemoteObjectCache();
+         }
+    }
+
+    $this->ignore_account = FALSE;  // affiche l'activation ou pas du plugin
   }
 
 }

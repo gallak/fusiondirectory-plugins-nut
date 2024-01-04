@@ -27,7 +27,7 @@ content :
   fileList :
   - './admin/systems/nut/services/nut/class_serviceNut.inc'
   - './admin/systems/nut/class_nutNode.inc'
-  - './include/nut/class_nut.inc'
+  - './include/nut/class_nutRessource.inc'
   - './locale/fr/fusiondirectory.po'
   - './locale/en/fusiondirectory.po'
   - './contrib/yaml/description.yaml'
